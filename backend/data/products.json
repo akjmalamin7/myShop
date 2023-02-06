@@ -1,0 +1,35 @@
+[
+    {
+        "name": "Women-GG0832s-001",
+        "price": "45.89",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "ratings": 4.5,
+        "images": [
+            {
+                "public_id": "products/tzfsnrlisdfsa",
+                "url": "https://www.soppiya.com/media/images/6304a9b78da5dfa6ec049a54/item/6305c2ce6aa739c3c1801941/var-1.webp"
+            },
+            {
+                "public_id": "products/tzfsnrlisdfsb",
+                "url": "https://www.soppiya.com/media/images/6304a9b78da5dfa6ec049a54/item/6305a8856aa739c3c17fa6f9/image1.webp"
+            },
+            {
+                "public_id": "products/tzfsnrlisdfsc",
+                "url": "https://www.soppiya.com/media/images/6304a9b78da5dfa6ec049a54/item/6305c3936aa739c3c1801bda/image1.webp"
+            },
+            {
+                "public_id": "products/tzfsnrlisdfsd",
+                "url": "https://www.soppiya.com/media/images/6304a9b78da5dfa6ec049a54/item/6305c2ce6aa739c3c1801941/var-1.webp"
+            },
+            {
+                "public_id": "products/tzfsnrlisdfse",
+                "url": "https://www.soppiya.com/media/images/6304a9b78da5dfa6ec049a54/item/6305b57f6aa739c3c17fd74c/image1.webp"
+            }
+        ],
+        "category": "Sports",
+        "seller": "Ebay",
+        "stock": 50,
+        "numOfReviews": 32,
+        "reviews": []
+    }
+]

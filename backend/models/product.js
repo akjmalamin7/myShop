@@ -88,3 +88,5 @@ const Product = model('Product', Schema({
         default:Date.now()
     }
 }))
+
+module.exports.Product = Product
