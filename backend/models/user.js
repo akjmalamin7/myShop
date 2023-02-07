@@ -1,7 +1,8 @@
 const {Schema, model} = require('mongoose')
 const validator = require('validator')
+const bcrypt = require('bcryptjs')
 
-const User = model('User', Schema({
+const userSchema =  Schema({
     name:{
         type:String,
         required:[true, 'Please enter your name'],
@@ -16,7 +17,7 @@ const User = model('User', Schema({
     password:{
         type:String,
         required:[true, 'Please enter your password'],
-        minLength:[6, 'Your password must be longer than 6 characters'],
+        minlength:[6, 'Your password must be longer than 6 characters'],
         select:false
     },
     avatar:{
@@ -39,6 +40,17 @@ const User = model('User', Schema({
     },
     resetPasswordToken:String,
     resetPasswordExpire:Date
-}))
+})
+
+
+
+userSchema.pre('save', async function (next){
+    if(!this.isModified('password')){
+        next()
+    }
+    this.password = await bcrypt.hash(this.password, 10)
+})
+
+const User = model('User', userSchema)
 
 module.exports = User
