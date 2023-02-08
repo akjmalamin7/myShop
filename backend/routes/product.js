@@ -1,4 +1,4 @@
-const router = require('express').Router()
+const router = require('express').Router();
 const {
     getProducts,
     newProduct,
@@ -6,11 +6,13 @@ const {
     updateProduct,
     deleteProduct
 } = require('../controllers/productController');
+const {isAuthenticatedUser, authorizeRoles} = require('../middlewares/auth')
+
 
 router.get('/product', getProducts)
 router.get('/product/:id', getSingleProduct)
-router.post('/product/new', newProduct)
-router.put('/product/:id', updateProduct)
-router.delete('/product/:id', deleteProduct)
+router.post('/product/new',isAuthenticatedUser, authorizeRoles('admin'), newProduct)
+router.put('/product/:id', isAuthenticatedUser, authorizeRoles('admin'), updateProduct)
+router.delete('/product/:id',isAuthenticatedUser, authorizeRoles('admin'), deleteProduct)
 
 module.exports = router

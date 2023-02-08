@@ -83,6 +83,11 @@ const Product = model('Product', Schema({
             }
         }
     ],
+    user:{
+        type: Schema.ObjectId,
+        ref:"User",
+        required:true
+    },
     createdAt:{
         type:Date,
         default:Date.now()
