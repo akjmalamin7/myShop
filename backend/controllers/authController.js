@@ -208,3 +208,23 @@ exports.getUserDetails = catchAsynchronous(async (req, res, next)=>{
         user
     })
 })
+
+// update user profile => admin
+exports.updateUser = catchAsynchronous(async(req, res, next)=>{
+    const newUserData = {
+        name: req.body.name,
+        email:req.body.email,
+        role: req.body.role
+    }
+
+    //update avatar: todo
+    const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+        new: true, 
+        runValidators:true,
+        useFindAndModify:false
+    })
+
+    res.status(200).json({
+        success:true
+    })
+})
