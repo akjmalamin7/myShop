@@ -195,3 +195,16 @@ exports.allUsers = catchAsynchronous(async(req, res, next)=>{
         users
     })
 })
+
+// get user details
+exports.getUserDetails = catchAsynchronous(async (req, res, next)=>{
+    const user = await User.findById(req.params.id)
+    if(!user){
+        return next(new ErrorHandler(`User does not found with id: ${req.params.id}`))
+    }
+
+    res.status(200).json({
+        success:true,
+        user
+    })
+})

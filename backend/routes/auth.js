@@ -9,7 +9,8 @@ const {
     getUserPortfolio,
     updatePassword,
     updateProfile,
-    allUsers
+    allUsers,
+    getUserDetails
 } = require('../controllers/authController')
 
 const { isAuthenticatedUser, authorizeRoles } = require('../middlewares/auth')
@@ -25,5 +26,6 @@ router.put('/me/update', isAuthenticatedUser, updateProfile)
 router.put('/password/update', isAuthenticatedUser, updatePassword)
 
 router.get('/admin/users', isAuthenticatedUser, authorizeRoles('admin'), allUsers)
+router.get('/admin/user/:id', isAuthenticatedUser, authorizeRoles('admin'), getUserDetails)
 
 module.exports = router
