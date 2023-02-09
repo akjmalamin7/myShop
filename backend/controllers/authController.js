@@ -228,3 +228,16 @@ exports.updateUser = catchAsynchronous(async(req, res, next)=>{
         success:true
     })
 })
+
+// get user details
+exports.deleteUser = catchAsynchronous(async (req, res, next)=>{
+    const user = await User.findById(req.params.id)
+    if(!user){
+        return next(new ErrorHandler(`User does not found with id: ${req.params.id}`))
+    }
+    await user.remove()
+    res.status(200).json({
+        success:true,
+        user
+    })
+})
