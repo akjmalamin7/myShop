@@ -145,7 +145,7 @@ exports.updatePassword = catchAsynchronous(async (req, res, next)=>{
     //check previous user password
     const isMatched = await user.comparePassword(req.body.oldPassword)
     if(!isMatched){
-        return next(new ErrorHandler('Old password is incorrect'));
+        return next(new ErrorHandler('Old password is incorrect'), 400);
     }
 
     user.password = req.body.password
@@ -153,6 +153,26 @@ exports.updatePassword = catchAsynchronous(async (req, res, next)=>{
     sendToken(user, 200,res)
 })
 
+
+// update user profile
+exports.updateProfile = catchAsynchronous(async(req, res, next)=>{
+    const newUserData = {
+        name: req.body.name,
+        email:req.body.email
+    }
+
+    //update avatar: todo
+    const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+        new: true, 
+        runValidators:true,
+        useFindAndModify:false
+    })
+
+    res.status(200).json({
+        success:true,
+        user
+    })
+})
 
 // logout user
 exports.logout = catchAsynchronous(async(req,res,next)=>{
@@ -164,5 +184,14 @@ exports.logout = catchAsynchronous(async(req,res,next)=>{
     res.status(200).json({
         success:true,
         message:'Logged out'
+    })
+})
+
+// get all users
+exports.allUsers = catchAsynchronous(async(req, res, next)=>{
+    const users = await User.find()
+    res.status(200).json({
+        success:true,
+        users
     })
 })
