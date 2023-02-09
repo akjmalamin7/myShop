@@ -93,3 +93,6 @@ const orderSchema = mongoose.Schema({
         default:Date.now
     }
 })
+
+
+module.exports = mongoose.model('Order', orderSchema)
